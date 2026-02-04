@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use App\Services\WHOZScore;
+use App\Models\ActivityLog;
 
 class GrowthRecordController extends Controller
 {

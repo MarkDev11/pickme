@@ -7,6 +7,7 @@ use App\Models\Child;
 use App\Models\GrowthRecord;
 use App\Models\BodyAnalysis;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ActivityLog;
 
 class DashboardController extends Controller
 {
