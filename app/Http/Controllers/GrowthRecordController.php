@@ -97,12 +97,8 @@ class GrowthRecordController extends Controller
                 'ai_analysis' => $aiResults['data']['analysis'],
                 'growth_status' => $aiResults['data']['status'],
                 'recommendations' => $aiResults['data']['recommendations'],
-                
-                // --- UBAH DUA BARIS INI ---
-                // Pakai json_encode agar jadi text biasa saat masuk database
-                'nutrition_advice' => json_encode($aiResults['data']['nutrition'] ?? []),
-                'milestone_check' => json_encode($aiResults['data']['milestones'] ?? []),
-                // --------------------------
+                'nutrition_advice' => $aiResults['data']['nutrition'] ?? [],
+                'milestone_check' => $aiResults['data']['milestones'] ?? [],
                 
                 'parent_notes' => $request->parent_notes,
             ]);

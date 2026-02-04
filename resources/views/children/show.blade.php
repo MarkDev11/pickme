@@ -66,7 +66,10 @@
                                 <span class="text-2xl mr-2">{{ $child->gender === 'male' ? '👦' : '👧' }}</span>
                                 <span class="text-lg">{{ $child->gender === 'male' ? 'Laki-laki' : 'Perempuan' }}</span>
                             </p>
-                            <p class="text-blue-100">📅 {{ $child->age_text }} ({{ $child->birth_date->format('d M Y') }})</p>
+                            <p class="text-blue-100">
+                                📅 {{ $child->birth_date->diff(now())->format('%y Tahun %m Bulan') }} 
+                                ({{ $child->birth_date->format('d M Y') }})
+                            </p>
                             <p class="text-blue-100">📍 {{ $child->birth_place }}</p>
                             @if($child->blood_type)
                                 <p class="text-blue-100">🩸 Golongan Darah: {{ $child->blood_type }}</p>
