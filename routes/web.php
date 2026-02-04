@@ -64,6 +64,7 @@ Route::middleware('auth')->group(function () {
     // ADMIN ROUTES
     // ==========================================
     Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
+        // Dashboard
         Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'dashboard'])->name('dashboard');
         
         // User Management
@@ -72,18 +73,29 @@ Route::middleware('auth')->group(function () {
         Route::delete('/users/{id}', [App\Http\Controllers\Admin\AdminController::class, 'destroyUser'])->name('users.destroy');
         Route::post('/users/{id}/toggle-role', [App\Http\Controllers\Admin\AdminController::class, 'toggleRole'])->name('users.toggle-role');
         
-        // Analysis Management
+        // Body Analysis Management
         Route::get('/analyses', [App\Http\Controllers\Admin\AdminController::class, 'analyses'])->name('analyses');
         Route::delete('/analyses/{id}', [App\Http\Controllers\Admin\AdminController::class, 'destroyAnalysis'])->name('analyses.destroy');
         
-        // Children & Growth Management
+        // Children Management
         Route::get('/children', [App\Http\Controllers\Admin\AdminController::class, 'children'])->name('children');
+        Route::get('/children/{id}', [App\Http\Controllers\Admin\AdminController::class, 'showChild'])->name('children.show');
+        
+        // Growth Records Management
         Route::get('/growth-records', [App\Http\Controllers\Admin\AdminController::class, 'growthRecords'])->name('growth-records');
+        
+        // Activity Logs
+        Route::get('/activity-logs', [App\Http\Controllers\Admin\AdminController::class, 'activityLogs'])->name('activity-logs');
+        Route::post('/activity-logs/clear-old', [App\Http\Controllers\Admin\AdminController::class, 'clearOldLogs'])->name('activity-logs.clear-old');
+        
+        // System Status
+        Route::get('/system-status', [App\Http\Controllers\Admin\AdminController::class, 'systemStatus'])->name('system-status');
         
         // Export Routes
         Route::get('/export/users', [App\Http\Controllers\Admin\AdminController::class, 'exportUsers'])->name('export.users');
         Route::get('/export/analyses', [App\Http\Controllers\Admin\AdminController::class, 'exportAnalyses'])->name('export.analyses');
         Route::get('/export/growth-records', [App\Http\Controllers\Admin\AdminController::class, 'exportGrowthRecords'])->name('export.growth');
+        Route::get('/export/activity-logs', [App\Http\Controllers\Admin\AdminController::class, 'exportActivityLogs'])->name('export.activity-logs');
     });
 });
 
