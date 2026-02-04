@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\BodyAnalysis;
 use Illuminate\Support\Facades\Storage;
+use App\Models\ActivityLog;
 
 class BodyAnalysisController extends Controller
 {
@@ -137,6 +138,20 @@ class BodyAnalysisController extends Controller
                 'full_analysis' => $data['description'] ?? 'No description provided',
             ]);
 
+            ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'ai_analysis',
+                'description' => "Melakukan analisis AI (Body Analysis)",
+                'subject_type' => BodyAnalysis::class,
+                'subject_id' => $analysis->id,
+                'properties' => json_encode([
+                    'height' => $analysis->estimated_height,
+                    'weight' => $analysis->estimated_weight
+                ]),
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+
             return redirect()
                 ->route('analysis.show', $analysis->id)
                 ->with('success', 'Analysis completed successfully!');
@@ -194,6 +209,16 @@ class BodyAnalysisController extends Controller
             'full_analysis'
         ]));
 
+        ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'update',
+                'description' => "Mengedit hasil analisis AI",
+                'subject_type' => BodyAnalysis::class,
+                'subject_id' => $analysis->id,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+
         return redirect()
             ->route('analysis.show', $analysis->id)
             ->with('success', 'Analysis updated successfully!');
@@ -214,6 +239,16 @@ class BodyAnalysisController extends Controller
         
         // Delete database record
         $analysis->delete();
+
+        ActivityLog::create([
+            'user_id' => auth()->id(),
+            'action' => 'delete',
+            'description' => "Menghapus riwayat analisis AI",
+            'subject_type' => BodyAnalysis::class,
+            'subject_id' => $id,
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
         
         return redirect()
             ->route('analysis.index')

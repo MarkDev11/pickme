@@ -97,6 +97,16 @@ class ChildController extends Controller
 
             DB::commit();
 
+            ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'create',
+                'description' => "Menambahkan data anak: {$child->name}",
+                'subject_type' => Child::class,
+                'subject_id' => $child->id,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+
             return redirect()
                 ->route('children.show', $child->id)
                 ->with('success', 'Data anak berhasil ditambahkan! 🎉');
@@ -222,6 +232,16 @@ class ChildController extends Controller
 
             DB::commit();
 
+            ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'update',
+                'description' => "Memperbarui data anak: {$child->name}",
+                'subject_type' => Child::class,
+                'subject_id' => $child->id,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+
             return redirect()
                 ->route('children.show', $child->id)
                 ->with('success', 'Data anak berhasil diperbarui! ✅');
@@ -261,6 +281,16 @@ class ChildController extends Controller
             $child->delete();
             
             DB::commit();
+
+            ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'delete',
+                'description' => "Menghapus data anak: {$childName}", // Pakai $childName karena objeknya sudah dihapus
+                'subject_type' => Child::class,
+                'subject_id' => $id, // Pakai ID langsung
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
 
             return redirect()
                 ->route('children.index')

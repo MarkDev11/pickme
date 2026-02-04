@@ -107,6 +107,18 @@ class GrowthRecordController extends Controller
             ]);
 
             DB::commit();
+
+            ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'create',
+                'description' => "Mencatat pertumbuhan: {$child->name} (Bulan ke-{$ageMonths})",
+                'subject_type' => GrowthRecord::class,
+                'subject_id' => $record->id,
+                'properties' => json_encode(['weight' => $record->actual_weight, 'height' => $record->actual_height]),
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+
             $this->updateAiSummary($child->id);
 
             // Redirect to edit page for parent confirmation
@@ -187,6 +199,17 @@ class GrowthRecordController extends Controller
             $record->update($validated);
 
             DB::commit();
+
+            ActivityLog::create([
+                'user_id' => auth()->id(),
+                'action' => 'update',
+                'description' => "Memperbarui catatan pertumbuhan: {$record->child->name}",
+                'subject_type' => GrowthRecord::class,
+                'subject_id' => $record->id,
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+            ]);
+            
             $this->updateAiSummary($record->child_id);
             return redirect()
                 ->route('growth.show', $record->id)

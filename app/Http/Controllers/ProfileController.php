@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\ActivityLog;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -34,6 +36,16 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        ActivityLog::create([
+            'user_id' => $request->user()->id,
+            'action' => 'update',
+            'description' => "Memperbarui profil akun (Nama/Email)",
+            'subject_type' => User::class,
+            'subject_id' => $request->user()->id,
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
@@ -47,6 +59,16 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
+
+        ActivityLog::create([
+            'user_id' => $user->id,
+            'action' => 'delete',
+            'description' => "Menghapus akun pengguna secara permanen",
+            'subject_type' => User::class,
+            'subject_id' => $user->id,
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
 
         Auth::logout();
 
