@@ -190,7 +190,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm text-gray-600 font-medium">Total Records</p>
-                    <p class="text-2xl font-bold text-blue-600 mt-1">{{ $records->total() }}</p>
+                    <p class="text-2xl font-bold text-blue-600 mt-1">{{ $stats['total'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,7 +205,7 @@
                 <div>
                     <p class="text-sm text-gray-600 font-medium">Normal Growth</p>
                     <p class="text-2xl font-bold text-green-600 mt-1">
-                        {{ $records->where('growth_status', 'like', '%normal%')->count() }}
+                        {{ $stats['normal'] }}
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
@@ -221,7 +221,7 @@
                 <div>
                     <p class="text-sm text-gray-600 font-medium">Need Attention</p>
                     <p class="text-2xl font-bold text-yellow-600 mt-1">
-                        {{ $records->where('growth_status', 'like', '%perlu perhatian%')->count() }}
+                        {{ $stats['attention'] }}
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
@@ -237,7 +237,7 @@
                 <div>
                     <p class="text-sm text-gray-600 font-medium">Critical</p>
                     <p class="text-2xl font-bold text-red-600 mt-1">
-                        {{ $records->where('growth_status', 'like', '%stunting%')->count() + $records->where('growth_status', 'like', '%obesitas%')->count() }}
+                        {{ $stats['critical'] }}
                     </p>
                 </div>
                 <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">

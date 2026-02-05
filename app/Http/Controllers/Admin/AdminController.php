@@ -366,9 +366,33 @@ class AdminController extends Controller
             $query->where('growth_status', 'like', "%{$request->status}%");
         }
 
+        $stats = [
+            'total' => GrowthRecord::count(),
+            
+            'normal' => GrowthRecord::where('growth_status', 'LIKE', '%Normal%')->count(),
+            
+            'critical' => GrowthRecord::where(function($q) {
+                $q->where('growth_status', 'LIKE', '%Parah%')   
+                  ->orWhere('growth_status', 'LIKE', '%Buruk%')  
+                  ->orWhere('growth_status', 'LIKE', '%Obesitas%');
+            })->count(),
+
+            'attention' => GrowthRecord::where(function($q) {
+                 $q->where('growth_status', 'LIKE', '%Stunting%') 
+                   ->orWhere('growth_status', 'LIKE', '%Kurang%') 
+                   ->orWhere('growth_status', 'LIKE', '%Lebih%')  
+                   ->orWhere('growth_status', 'LIKE', '%Risiko%') 
+                   ->orWhere('growth_status', 'LIKE', '%Perlu Perhatian%');
+            })
+            ->where('growth_status', 'NOT LIKE', '%Parah%')    
+            ->where('growth_status', 'NOT LIKE', '%Buruk%')    
+            ->where('growth_status', 'NOT LIKE', '%Obesitas%') 
+            ->count(),
+        ];
+
         $records = $query->latest('record_date')->paginate(20);
 
-        return view('admin.growth-records.index', compact('records'));
+        return view('admin.growth-records.index', compact('records', 'stats'));
     }
 
     /**
