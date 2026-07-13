@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBodyAnalysisRequest;
 use Illuminate\Support\Facades\Http;
 use App\Models\BodyAnalysis;
 use Illuminate\Support\Facades\Storage;
@@ -18,21 +19,22 @@ class BodyAnalysisController extends Controller
         // Get only current user's analyses if not admin
         if (auth()->user()->isAdmin()) {
             $history = BodyAnalysis::with('user')->latest()->get();
-        } else {
+        }
+        else {
             $history = BodyAnalysis::where('user_id', auth()->id())->latest()->get();
         }
-        
+
         // Calculate statistics
         $totalAnalyses = $history->count();
         $avgHeight = $history->avg('estimated_height') ?? 0;
         $avgWeight = $history->avg('estimated_weight') ?? 0;
         $avgAge = $history->avg('estimated_age') ?? 0;
-        
+
         return view('analysis.dashboard', compact(
-            'history', 
-            'totalAnalyses', 
-            'avgHeight', 
-            'avgWeight', 
+            'history',
+            'totalAnalyses',
+            'avgHeight',
+            'avgWeight',
             'avgAge'
         ));
     }
@@ -48,11 +50,9 @@ class BodyAnalysisController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBodyAnalysisRequest $request)
     {
-        $request->validate([
-            'photo' => 'required|image|mimes:jpeg,jpg,png|max:5120', // Max 5MB
-        ]);
+        $validated = $request->validated();
 
         try {
             // 1. Upload file to public folder
@@ -72,33 +72,33 @@ class BodyAnalysisController extends Controller
                        {\"height\": 170, \"weight\": 65, \"age\": 25, \"description\": \"brief reasoning\"}. 
                        Make logical estimations based on body proportions and appearance.";
 
-            $apiKey = env('GEMINI_API_KEY');
-            $modelName = 'gemini-2.5-flash-lite-preview-09-2025';
+            $apiKey = config('services.gemini.api_key');
+            $modelName = config('services.gemini.model');
 
             // 4. Call Gemini API
             $response = Http::timeout(30)
                 ->withHeaders(['Content-Type' => 'application/json'])
                 ->post("https://generativelanguage.googleapis.com/v1beta/models/{$modelName}:generateContent?key={$apiKey}", [
-                    'contents' => [
-                        [
-                            'parts' => [
-                                ['text' => $prompt],
-                                [
-                                    'inline_data' => [
-                                        'mime_type' => $mimeType,
-                                        'data' => $imageData
-                                    ]
+                'contents' => [
+                    [
+                        'parts' => [
+                            ['text' => $prompt],
+                            [
+                                'inline_data' => [
+                                    'mime_type' => $mimeType,
+                                    'data' => $imageData
                                 ]
                             ]
                         ]
-                    ],
-                    'generationConfig' => [
-                        'temperature' => 0.4,
-                        'topK' => 32,
-                        'topP' => 1,
-                        'maxOutputTokens' => 1024,
                     ]
-                ]);
+                ],
+                'generationConfig' => [
+                    'temperature' => 0.4,
+                    'topK' => 32,
+                    'topP' => 1,
+                    'maxOutputTokens' => 1024,
+                ]
+            ]);
 
             $result = $response->json();
 
@@ -108,7 +108,7 @@ class BodyAnalysisController extends Controller
                 if (file_exists($absolutePath)) {
                     unlink($absolutePath);
                 }
-                
+
                 return back()
                     ->with('error', 'AI Analysis Error: ' . ($result['error']['message'] ?? 'Unknown error'))
                     ->withInput();
@@ -132,9 +132,9 @@ class BodyAnalysisController extends Controller
             $analysis = BodyAnalysis::create([
                 'user_id' => auth()->id(),
                 'image_path' => $dbPath,
-                'estimated_height' => (int) $data['height'],
-                'estimated_weight' => (int) $data['weight'],
-                'estimated_age' => (int) $data['age'],
+                'estimated_height' => (int)$data['height'],
+                'estimated_weight' => (int)$data['weight'],
+                'estimated_age' => (int)$data['age'],
                 'full_analysis' => $data['description'] ?? 'No description provided',
             ]);
 
@@ -142,7 +142,7 @@ class BodyAnalysisController extends Controller
                 'user_id' => auth()->id(),
                 'action' => 'ai_analysis',
                 'description' => "Melakukan analisis AI (Body Analysis)",
-                'subject_type' => BodyAnalysis::class,
+                'subject_type' => BodyAnalysis::class ,
                 'subject_id' => $analysis->id,
                 'properties' => json_encode([
                     'height' => $analysis->estimated_height,
@@ -156,12 +156,13 @@ class BodyAnalysisController extends Controller
                 ->route('analysis.show', $analysis->id)
                 ->with('success', 'Analysis completed successfully!');
 
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             // Clean up uploaded file on error
             if (isset($absolutePath) && file_exists($absolutePath)) {
                 unlink($absolutePath);
             }
-            
+
             return back()
                 ->with('error', 'An error occurred: ' . $e->getMessage())
                 ->withInput();
@@ -194,7 +195,7 @@ class BodyAnalysisController extends Controller
     {
         // Optional: implement if you want to manually edit measurements
         $analysis = BodyAnalysis::findOrFail($id);
-        
+
         $request->validate([
             'estimated_height' => 'required|numeric|min:50|max:300',
             'estimated_weight' => 'required|numeric|min:20|max:300',
@@ -210,14 +211,14 @@ class BodyAnalysisController extends Controller
         ]));
 
         ActivityLog::create([
-                'user_id' => auth()->id(),
-                'action' => 'update',
-                'description' => "Mengedit hasil analisis AI",
-                'subject_type' => BodyAnalysis::class,
-                'subject_id' => $analysis->id,
-                'ip_address' => request()->ip(),
-                'user_agent' => request()->userAgent(),
-            ]);
+            'user_id' => auth()->id(),
+            'action' => 'update',
+            'description' => "Mengedit hasil analisis AI",
+            'subject_type' => BodyAnalysis::class ,
+            'subject_id' => $analysis->id,
+            'ip_address' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+        ]);
 
         return redirect()
             ->route('analysis.show', $analysis->id)
@@ -230,13 +231,13 @@ class BodyAnalysisController extends Controller
     public function destroy(string $id)
     {
         $analysis = BodyAnalysis::findOrFail($id);
-        
+
         // Delete image file
         $imagePath = public_path($analysis->image_path);
         if (file_exists($imagePath)) {
             unlink($imagePath);
         }
-        
+
         // Delete database record
         $analysis->delete();
 
@@ -244,12 +245,12 @@ class BodyAnalysisController extends Controller
             'user_id' => auth()->id(),
             'action' => 'delete',
             'description' => "Menghapus riwayat analisis AI",
-            'subject_type' => BodyAnalysis::class,
+            'subject_type' => BodyAnalysis::class ,
             'subject_id' => $id,
             'ip_address' => request()->ip(),
             'user_agent' => request()->userAgent(),
         ]);
-        
+
         return redirect()
             ->route('analysis.index')
             ->with('success', 'Analysis deleted successfully!');
@@ -262,21 +263,21 @@ class BodyAnalysisController extends Controller
     {
         // Optional: implement CSV/PDF export
         $analyses = BodyAnalysis::all();
-        
+
         $filename = 'body-analyses-' . date('Y-m-d') . '.csv';
         $headers = [
             'Content-Type' => 'text/csv',
             'Content-Disposition' => "attachment; filename=\"$filename\"",
         ];
 
-        $callback = function() use ($analyses) {
+        $callback = function () use ($analyses) {
             $file = fopen('php://output', 'w');
             fputcsv($file, ['ID', 'Date', 'Height (cm)', 'Weight (kg)', 'Age', 'BMI', 'Description']);
 
             foreach ($analyses as $analysis) {
                 $heightM = $analysis->estimated_height / 100;
                 $bmi = $heightM > 0 ? round($analysis->estimated_weight / ($heightM * $heightM), 1) : 0;
-                
+
                 fputcsv($file, [
                     $analysis->id,
                     $analysis->created_at->format('Y-m-d H:i:s'),

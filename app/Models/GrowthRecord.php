@@ -70,19 +70,30 @@ class GrowthRecord extends Model
     }
 
     /**
+     * Get the previous growth record (cached per instance)
+     */
+    protected function getPreviousRecord()
+    {
+        if (!isset($this->previousRecordCache)) {
+            $this->previousRecordCache = self::where('child_id', $this->child_id)
+                ->where('record_date', '<', $this->record_date)
+                ->orderBy('record_date', 'desc')
+                ->first();
+        }
+        return $this->previousRecordCache;
+    }
+
+    /**
      * Get weight difference from previous record
      */
     public function getWeightDifferenceAttribute()
     {
-        $previous = self::where('child_id', $this->child_id)
-                       ->where('record_date', '<', $this->record_date)
-                       ->orderBy('record_date', 'desc')
-                       ->first();
-        
+        $previous = $this->getPreviousRecord();
+
         if (!$previous) {
             return null;
         }
-        
+
         return round($this->actual_weight - $previous->actual_weight, 2);
     }
 
@@ -91,15 +102,12 @@ class GrowthRecord extends Model
      */
     public function getHeightDifferenceAttribute()
     {
-        $previous = self::where('child_id', $this->child_id)
-                       ->where('record_date', '<', $this->record_date)
-                       ->orderBy('record_date', 'desc')
-                       ->first();
-        
+        $previous = $this->getPreviousRecord();
+
         if (!$previous) {
             return null;
         }
-        
+
         return round($this->actual_height - $previous->actual_height, 2);
     }
 
@@ -109,19 +117,19 @@ class GrowthRecord extends Model
     public function getStatusColorAttribute()
     {
         $status = strtolower($this->growth_status ?? '');
-        
+
         if (str_contains($status, 'normal') || str_contains($status, 'bagus') || str_contains($status, 'sehat')) {
             return 'green';
         }
-        
+
         if (str_contains($status, 'perlu perhatian') || str_contains($status, 'risiko')) {
             return 'yellow';
         }
-        
+
         if (str_contains($status, 'stunting') || str_contains($status, 'gizi buruk') || str_contains($status, 'obesitas')) {
             return 'red';
         }
-        
+
         return 'blue';
     }
 
@@ -133,10 +141,10 @@ class GrowthRecord extends Model
         if (!$this->ai_estimated_weight || !$this->ai_estimated_height) {
             return false;
         }
-        
+
         $weightDiff = abs($this->actual_weight - $this->ai_estimated_weight);
         $heightDiff = abs($this->actual_height - $this->ai_estimated_height);
-        
+
         return $weightDiff > 0.1 || $heightDiff > 0.5;
     }
 
@@ -147,21 +155,21 @@ class GrowthRecord extends Model
     {
         $weightDiff = $this->weight_difference;
         $heightDiff = $this->height_difference;
-        
+
         if (!$weightDiff && !$heightDiff) {
             return 'Ini adalah data pertama';
         }
-        
+
         $result = [];
-        
+
         if ($weightDiff) {
             $result[] = ($weightDiff > 0 ? '+' : '') . $weightDiff . ' kg';
         }
-        
+
         if ($heightDiff) {
             $result[] = ($heightDiff > 0 ? '+' : '') . $heightDiff . ' cm';
         }
-        
+
         return implode(' • ', $result);
     }
 
