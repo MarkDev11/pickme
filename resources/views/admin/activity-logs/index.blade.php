@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Activity Logs
+        Log Aktivitas
     </x-slot>
 
     <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-100 overflow-hidden">
@@ -14,20 +14,20 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800">Activity Logs</h3>
-                        <p class="text-sm text-gray-600">Monitor all system activities</p>
+                        <h3 class="text-2xl font-bold text-gray-800">Log Aktivitas</h3>
+                        <p class="text-sm text-gray-600">Pantau semua aktivitas sistem</p>
                     </div>
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-3">
                     <!-- Clear Old Logs -->
-                    <form action="{{ route('admin.activity-logs.clear-old') }}" method="POST" onsubmit="return confirm('Clear logs older than 90 days?');">
+                    <form action="{{ route('admin.activity-logs.clear-old') }}" method="POST" onsubmit="return confirm('Hapus log lebih dari 90 hari?');">
                         @csrf
                         <button type="submit" class="inline-flex items-center justify-center px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-xl transition-colors shadow-md">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                             </svg>
-                            Clear Old Logs
+                            Hapus Log Lama
                         </button>
                     </form>
 
@@ -37,7 +37,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
-                        Export CSV
+                        Ekspor CSV
                     </a>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <!-- Action Filter -->
                 <div>
                     <select name="action" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="">All Actions</option>
+                        <option value="">Semua Aksi</option>
                         @foreach($actions as $action)
                         <option value="{{ $action }}" {{ request('action') == $action ? 'selected' : '' }}>
                             {{ str_replace('_', ' ', ucfirst($action)) }}
@@ -113,7 +113,7 @@
                         <div class="flex items-start justify-between gap-4">
                             <div class="flex-1">
                                 <p class="text-sm font-semibold text-gray-900">
-                                    {{ $log->user->name ?? 'System' }}
+                                    {{ $log->user->name ?? 'Sistem' }}
                                 </p>
                                 <p class="text-sm text-gray-700 mt-1">{{ $log->description }}</p>
                                 <div class="flex items-center gap-4 mt-2 text-xs text-gray-500">
@@ -149,7 +149,7 @@
                 <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                 </svg>
-                <p class="text-lg font-semibold text-gray-500">No activity logs found</p>
+                <p class="text-lg font-semibold text-gray-500">Tidak ada log aktivitas</p>
             </div>
             @endforelse
         </div>

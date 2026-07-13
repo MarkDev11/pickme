@@ -108,7 +108,7 @@
                         <h4 class="font-bold text-gray-800">Foto Pemeriksaan</h4>
                     </div>
                     <div class="p-4">
-                        <img src="{{ asset($record->photo_path) }}" class="w-full rounded-xl shadow-lg" alt="Growth Photo">
+                        <img src="{{ asset($record->photo_path) }}" class="w-full rounded-xl shadow-lg" alt="Foto Pertumbuhan">
                     </div>
                 </div>
 

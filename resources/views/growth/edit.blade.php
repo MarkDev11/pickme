@@ -88,7 +88,7 @@
                         <h4 class="font-bold text-gray-800">Foto yang Diupload</h4>
                     </div>
                     <div class="p-6">
-                        <img src="{{ asset($record->photo_path) }}" class="w-full rounded-xl shadow-lg" alt="Child Photo">
+                        <img src="{{ asset($record->photo_path) }}" class="w-full rounded-xl shadow-lg" alt="Foto Anak">
                     </div>
                 </div>
 

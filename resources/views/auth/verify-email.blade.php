@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify Email</title>
+    <title>Verifikasi Email</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex items-center justify-center p-4 relative overflow-hidden">
@@ -25,9 +25,9 @@
                     </svg>
                 </div>
                 <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-2">
-                    Verify Email
+                    Verifikasi Email
                 </h2>
-                <p class="text-blue-600/80 text-sm">Almost there! Just one more step</p>
+                <p class="text-blue-600/80 text-sm">Hampir selesai! Satu langkah lagi</p>
             </div>
 
             <!-- Info Box -->
@@ -37,7 +37,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <p class="text-sm text-blue-700">
-                        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+                        {{ __('Terima kasih telah mendaftar! Sebelum memulai, verifikasi alamat email Anda dengan mengklik tautan yang kami kirimkan. Jika tidak menerima email, kami akan kirim ulang dengan senang hati.') }}
                     </p>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                         <p class="text-sm text-green-700 font-medium">
-                            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                            {{ __('Tautan verifikasi baru telah dikirim ke alamat email yang Anda daftarkan.') }}
                         </p>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     <button 
                         type="submit" 
                         class="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:ring-4 focus:ring-blue-300 focus:outline-none">
-                        Resend Verification Email
+                        Kirim Ulang Email Verifikasi
                     </button>
                 </form>
 
@@ -72,7 +72,7 @@
                     <button 
                         type="submit" 
                         class="w-full py-3 px-6 bg-white hover:bg-gray-50 text-blue-600 font-semibold rounded-xl border-2 border-blue-200 hover:border-blue-300 shadow-sm hover:shadow-md transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:ring-4 focus:ring-blue-100 focus:outline-none">
-                        Log Out
+                        Keluar
                     </button>
                 </form>
             </div>
@@ -80,7 +80,7 @@
             <!-- Help Text -->
             <div class="mt-6 text-center">
                 <p class="text-xs text-gray-500">
-                    Didn't receive the email? Check your spam folder or contact support
+                    Tidak menerima email? Periksa folder spam atau hubungi dukungan
                 </p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        AI Body Analysis Dashboard
+        Dashboard Analisis Tubuh AI
     </x-slot>
 
     <!-- Stats Cards -->
@@ -15,7 +15,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ $totalAnalyses }}</span>
             </div>
-            <p class="text-blue-100 font-medium">Total Analyses</p>
+            <p class="text-blue-100 font-medium">Total Analisis</p>
         </div>
 
         <!-- Avg Height -->
@@ -28,7 +28,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ number_format($avgHeight, 0) }}</span>
             </div>
-            <p class="text-green-100 font-medium">Avg Height (cm)</p>
+            <p class="text-green-100 font-medium">Rata Tinggi (cm)</p>
         </div>
 
         <!-- Avg Weight -->
@@ -41,7 +41,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ number_format($avgWeight, 0) }}</span>
             </div>
-            <p class="text-purple-100 font-medium">Avg Weight (kg)</p>
+            <p class="text-purple-100 font-medium">Rata Berat (kg)</p>
         </div>
 
         <!-- Avg Age -->
@@ -54,7 +54,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ number_format($avgAge, 0) }}</span>
             </div>
-            <p class="text-orange-100 font-medium">Avg Age (years)</p>
+            <p class="text-orange-100 font-medium">Rata Usia (tahun)</p>
         </div>
     </div>
 
@@ -65,7 +65,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            <span>New Analysis</span>
+            <span>Analisis Baru</span>
         </a>
 
         <button 
@@ -74,7 +74,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
             </svg>
-            <span>Refresh</span>
+            <span>Segarkan</span>
         </button>
     </div>
 
@@ -89,11 +89,11 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-800">Analysis History</h3>
-                        <p class="text-sm text-gray-600">All body analysis records</p>
+                        <h3 class="text-xl font-bold text-gray-800">Riwayat Analisis</h3>
+                        <p class="text-sm text-gray-600">Semua catatan analisis tubuh</p>
                     </div>
                 </div>
-                <span class="text-sm text-gray-500">{{ $history->count() }} records</span>
+                <span class="text-sm text-gray-500">{{ $history->count() }} catatan</span>
             </div>
         </div>
 
@@ -101,13 +101,13 @@
             <table class="w-full">
                 <thead class="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Time</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Photo</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Height</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Weight</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Age</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Waktu</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Foto</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Tinggi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Berat</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Usia</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">BMI</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Actions</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -133,7 +133,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-orange-100 text-orange-800">
-                                {{ $item->estimated_age }} yrs
+                                {{ $item->estimated_age }} thn
                             </span>
                         </td>
                         <td class="px-6 py-4">
@@ -150,18 +150,18 @@
                             <div class="flex items-center space-x-2">
                                 <a href="{{ route('analysis.show', $item->id) }}" 
                                    class="p-2 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded-lg transition-colors"
-                                   title="View Details">
+                                   title="Lihat Detail">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
                                     </svg>
                                 </a>
-                                <form action="{{ route('analysis.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                                <form action="{{ route('analysis.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" 
                                             class="p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors"
-                                            title="Delete">
+                                            title="Hapus">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                         </svg>
@@ -177,8 +177,8 @@
                                 <svg class="w-16 h-16 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                                 </svg>
-                                <p class="text-gray-500 font-medium">No analysis records yet</p>
-                                <a href="{{ route('analysis.create') }}" class="mt-4 text-blue-600 hover:text-blue-700 font-semibold">Create your first analysis →</a>
+                                <p class="text-gray-500 font-medium">Belum ada riwayat analisis</p>
+                                <a href="{{ route('analysis.create') }}" class="mt-4 text-blue-600 hover:text-blue-700 font-semibold">Buat analisis pertama →</a>
                             </div>
                         </td>
                     </tr>

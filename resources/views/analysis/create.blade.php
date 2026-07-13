@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        New Body Analysis
+        Analisis Tubuh Baru
     </x-slot>
 
     <div class="">
@@ -17,8 +17,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h2 class="text-2xl font-bold mb-1">AI-Powered Body Analysis</h2>
-                        <p class="text-blue-100">Upload a full-body photo for instant AI analysis</p>
+                        <h2 class="text-2xl font-bold mb-1">Analisis Tubuh dengan AI</h2>
+                        <p class="text-blue-100">Unggah foto seluruh tubuh untuk analisis AI instan</p>
                     </div>
                 </div>
                 
@@ -29,8 +29,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                             </svg>
                             <div>
-                                <p class="text-sm text-blue-100">Processing Time</p>
-                                <p class="font-bold">3-5 seconds</p>
+                                <p class="text-sm text-blue-100">Waktu Proses</p>
+                                <p class="font-bold">3-5 detik</p>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
                             <div>
-                                <p class="text-sm text-blue-100">Max File Size</p>
+                                <p class="text-sm text-blue-100">Ukuran Maks File</p>
                                 <p class="font-bold">5 MB</p>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                         <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
                         </svg>
-                        Upload Photo
+                        Unggah Foto
                     </h3>
                 </div>
 
@@ -98,7 +98,7 @@
 
                     <div class="mb-6">
                         <label class="block text-sm font-semibold text-gray-800 mb-3">
-                            Select Full Body Photo
+                            Pilih Foto Seluruh Tubuh
                         </label>
                         
                         <!-- File Upload Area -->
@@ -118,13 +118,13 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
                                 </div>
-                                <p class="text-gray-600 font-medium">Click to upload or drag and drop</p>
-                                <p class="text-sm text-gray-500">PNG, JPG, JPEG up to 5MB</p>
+                                <p class="text-gray-600 font-medium">Klik untuk unggah atau seret dan lepas</p>
+                                <p class="text-sm text-gray-500">PNG, JPG, JPEG maks 5MB</p>
                             </div>
 
                             <div id="imagePreview" class="hidden">
                                 <img id="preview" class="max-h-64 mx-auto rounded-xl shadow-lg">
-                                <p class="mt-3 text-sm text-gray-600">Click to change photo</p>
+                                <p class="mt-3 text-sm text-gray-600">Klik untuk ganti foto</p>
                             </div>
                         </div>
 
@@ -144,7 +144,7 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
-                        <span>Analyze with AI</span>
+                        <span>Analisis dengan AI</span>
                     </button>
 
                     <div id="loadingState" class="hidden mt-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
@@ -153,7 +153,7 @@
                                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            <p class="text-blue-700 font-medium">Analyzing image with AI... Please wait</p>
+                            <p class="text-blue-700 font-medium">Menganalisis gambar dengan AI... Harap tunggu</p>
                         </div>
                     </div>
                 </form>
@@ -166,32 +166,32 @@
                         <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
-                        Best Practices
+                        Panduan
                     </h3>
                     <ul class="space-y-3">
                         <li class="flex items-start space-x-3">
                             <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700">Use a clear, well-lit photo</span>
+                            <span class="text-gray-700">Gunakan foto yang jelas dan cukup terang</span>
                         </li>
                         <li class="flex items-start space-x-3">
                             <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700">Ensure full body is visible</span>
+                            <span class="text-gray-700">Pastikan seluruh tubuh terlihat</span>
                         </li>
                         <li class="flex items-start space-x-3">
                             <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700">Stand straight, facing camera</span>
+                            <span class="text-gray-700">Berdiri tegak, menghadap kamera</span>
                         </li>
                         <li class="flex items-start space-x-3">
                             <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700">Avoid baggy clothes</span>
+                            <span class="text-gray-700">Hindari pakaian longgar</span>
                         </li>
                     </ul>
                 </div>
@@ -202,9 +202,9 @@
                             <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                         </svg>
                         <div>
-                            <h4 class="font-bold text-yellow-900 mb-2">Important Note</h4>
+                            <h4 class="font-bold text-yellow-900 mb-2">Catatan Penting</h4>
                             <p class="text-sm text-yellow-800 leading-relaxed">
-                                This is an AI estimation tool. Results may vary and should not be used for medical diagnosis. For accurate measurements, please consult a healthcare professional.
+                                Ini adalah alat estimasi AI. Hasil dapat bervariasi dan tidak boleh digunakan untuk diagnosis medis. Untuk pengukuran akurat, silakan konsultasi dengan tenaga kesehatan profesional.
                             </p>
                         </div>
                     </div>

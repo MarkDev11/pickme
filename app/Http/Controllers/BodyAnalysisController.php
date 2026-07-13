@@ -156,7 +156,7 @@ class BodyAnalysisController extends Controller
 
             return redirect()
                 ->route('analysis.show', $analysis->id)
-                ->with('success', 'Analysis completed successfully!');
+                ->with('success', 'Analisis berhasil diselesaikan!');
 
         }
         catch (\Exception $e) {
@@ -224,7 +224,7 @@ class BodyAnalysisController extends Controller
 
         return redirect()
             ->route('analysis.show', $analysis->id)
-            ->with('success', 'Analysis updated successfully!');
+            ->with('success', 'Analisis berhasil diperbarui!');
     }
 
     /**

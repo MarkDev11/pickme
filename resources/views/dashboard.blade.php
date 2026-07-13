@@ -103,7 +103,7 @@
                     <div class="p-6">
                         <div class="flex items-center justify-between">
                             <div>
-                                <p class="text-sm font-medium text-gray-600 mb-1">Analisa Body AI</p>
+                                <p class="text-sm font-medium text-gray-600 mb-1">Analisis Tubuh AI</p>
                                 <p class="text-3xl font-bold text-gray-900">
                                     {{ $totalAnalyses ?? 0 }}
                                 </p>

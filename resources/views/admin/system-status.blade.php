@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        System Status
+        Status Sistem
     </x-slot>
 
     <!-- System Load Stats -->
@@ -15,7 +15,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ $systemLoad['cpu_1min'] }}%</span>
             </div>
-            <p class="text-blue-100 font-medium">CPU Load (1 min)</p>
+            <p class="text-blue-100 font-medium">Beban CPU (1 mnt)</p>
         </div>
 
         <!-- Memory Usage -->
@@ -28,7 +28,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ $systemLoad['memory_usage'] }}%</span>
             </div>
-            <p class="text-green-100 font-medium">Memory Usage</p>
+            <p class="text-green-100 font-medium">Penggunaan Memori</p>
         </div>
 
         <!-- Disk Usage -->
@@ -41,7 +41,7 @@
                 </div>
                 <span class="text-3xl font-bold">{{ $systemLoad['disk_usage'] }}%</span>
             </div>
-            <p class="text-purple-100 font-medium">Disk Usage</p>
+            <p class="text-purple-100 font-medium">Penggunaan Disk</p>
         </div>
 
         <!-- System Status -->
@@ -50,9 +50,9 @@
                 <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                     <div class="w-4 h-4 bg-white rounded-full animate-pulse"></div>
                 </div>
-                <span class="text-2xl font-bold">Online</span>
+                <span class="text-2xl font-bold">Daring</span>
             </div>
-            <p class="text-orange-100 font-medium">System Status</p>
+            <p class="text-orange-100 font-medium">Status Sistem</p>
         </div>
     </div>
 
@@ -63,7 +63,7 @@
                 <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
                 </svg>
-                Database Statistics
+                Statistik Database
             </h3>
         </div>
 
@@ -93,7 +93,7 @@
                 <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"/>
                 </svg>
-                Storage Information
+                Informasi Penyimpanan
             </h3>
         </div>
 
@@ -123,7 +123,7 @@
                 <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                System Information
+                Informasi Sistem
             </h3>
         </div>
 
@@ -131,34 +131,34 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-3">
                     <div class="flex justify-between py-2 border-b border-gray-200">
-                        <span class="font-semibold text-gray-600">PHP Version:</span>
+                        <span class="font-semibold text-gray-600">Versi PHP:</span>
                         <span class="text-gray-800">{{ PHP_VERSION }}</span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-gray-200">
-                        <span class="font-semibold text-gray-600">Laravel Version:</span>
+                        <span class="font-semibold text-gray-600">Versi Laravel:</span>
                         <span class="text-gray-800">{{ app()->version() }}</span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-gray-200">
-                        <span class="font-semibold text-gray-600">Server Software:</span>
+                        <span class="font-semibold text-gray-600">Perangkat Lunak Server:</span>
                         <span class="text-gray-800">{{ $_SERVER['SERVER_SOFTWARE'] ?? 'N/A' }}</span>
                     </div>
                 </div>
 
                 <div class="space-y-3">
                     <div class="flex justify-between py-2 border-b border-gray-200">
-                        <span class="font-semibold text-gray-600">Environment:</span>
+                        <span class="font-semibold text-gray-600">Lingkungan:</span>
                         <span class="px-3 py-1 text-xs font-semibold rounded-full {{ app()->environment('production') ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700' }}">
                             {{ strtoupper(app()->environment()) }}
                         </span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-gray-200">
-                        <span class="font-semibold text-gray-600">Debug Mode:</span>
+                        <span class="font-semibold text-gray-600">Mode Debug:</span>
                         <span class="px-3 py-1 text-xs font-semibold rounded-full {{ config('app.debug') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700' }}">
                             {{ config('app.debug') ? 'ON' : 'OFF' }}
                         </span>
                     </div>
                     <div class="flex justify-between py-2 border-b border-gray-200">
-                        <span class="font-semibold text-gray-600">Timezone:</span>
+                        <span class="font-semibold text-gray-600">Zona Waktu:</span>
                         <span class="text-gray-800">{{ config('app.timezone') }}</span>
                     </div>
                 </div>

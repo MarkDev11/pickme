@@ -115,7 +115,7 @@
                         <!-- Records Count Badge -->
                         <div class="absolute top-3 left-3">
                             <span class="px-3 py-1 rounded-full text-xs font-bold bg-white text-blue-600 shadow-lg">
-                                📊 {{ $child->growth_records_count ?? 0 }} Record
+                                📊 {{ $child->growth_records_count ?? 0 }} Catatan
                             </span>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                             </a>
                             <a href="{{ route('growth.create', $child->id) }}" 
                                class="flex-1 px-4 py-2 bg-green-500 hover:bg-green-600 text-white text-center font-semibold rounded-lg transition-colors text-sm">
-                                + Tambah Record
+                                + Tambah Catatan
                             </a>
                         </div>
                     </div>

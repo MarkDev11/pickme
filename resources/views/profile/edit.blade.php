@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Profile Settings
+        Pengaturan Profil
     </x-slot>
 
     <div class="max-w-7xl mx-auto space-y-6">
@@ -35,8 +35,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-800">Profile Information</h3>
-                        <p class="text-sm text-gray-600">Update your account's profile information and email address</p>
+                        <h3 class="text-xl font-bold text-gray-800">Informasi Profil</h3>
+                        <p class="text-sm text-gray-600">Perbarui informasi profil dan alamat email akun Anda</p>
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-800">Update Password</h3>
-                        <p class="text-sm text-gray-600">Ensure your account is using a long, random password to stay secure</p>
+                        <h3 class="text-xl font-bold text-gray-800">Perbarui Password</h3>
+                        <p class="text-sm text-gray-600">Pastikan akun Anda menggunakan password panjang dan acak agar tetap aman</p>
                     </div>
                 </div>
             </div>
@@ -75,8 +75,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold text-gray-800">Delete Account</h3>
-                        <p class="text-sm text-gray-600">Permanently delete your account and all associated data</p>
+                        <h3 class="text-xl font-bold text-gray-800">Hapus Akun</h3>
+                        <p class="text-sm text-gray-600">Hapus akun Anda dan semua data terkait secara permanen</p>
                     </div>
                 </div>
             </div>

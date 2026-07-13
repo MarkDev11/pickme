@@ -32,7 +32,7 @@
                 <div class="hidden md:block">
                     <input 
                         type="text" 
-                        placeholder="Search..." 
+                        placeholder="Cari..." 
                         class="px-4 py-2 bg-gray-100 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all duration-300"
                     >
                 </div>
@@ -76,7 +76,7 @@
                             <svg class="w-4 h-4 mr-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                             </svg>
-                            My Profile
+                            Profil Saya
                         </a>
                         
                         <form method="POST" action="{{ route('logout') }}">
@@ -85,7 +85,7 @@
                                 <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
                                 </svg>
-                                Logout
+                                Keluar
                             </button>
                         </form>
                     </div>
@@ -108,7 +108,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
-                <span class="font-semibold">Profile</span>
+                <span class="font-semibold">Profil</span>
             </a>
         </div>
     </div>

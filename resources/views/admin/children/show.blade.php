@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Child Details
+        Detil Anak
     </x-slot>
 
     <!-- Back Button -->
@@ -10,7 +10,7 @@
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
             </svg>
-            Back to Children List
+            ← Kembali ke Daftar Anak
         </a>
     </div>
 
@@ -21,7 +21,7 @@
                 <svg class="w-7 h-7 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
-                Child Information
+                Informasi Anak
             </h3>
         </div>
 
@@ -48,24 +48,24 @@
                                 <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                                 </svg>
-                                Quick Stats
+                                Statistik Cepat
                             </h4>
                             <div class="space-y-3">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm text-gray-600">Total Records:</span>
+                                    <span class="text-sm text-gray-600">Total Catatan:</span>
                                     <span class="text-lg font-bold text-blue-600">{{ $child->growth_records_count }}</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm text-gray-600">Age:</span>
+                                    <span class="text-sm text-gray-600">Usia:</span>
                                     <span class="text-lg font-bold text-green-600">{{ $child->age_text }}</span>
                                 </div>
                                 @if($child->latestGrowth)
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm text-gray-600">Latest Weight:</span>
+                                    <span class="text-sm text-gray-600">Berat Terakhir:</span>
                                     <span class="text-lg font-bold text-purple-600">{{ $child->latestGrowth->actual_weight }} kg</span>
                                 </div>
                                 <div class="flex justify-between items-center">
-                                    <span class="text-sm text-gray-600">Latest Height:</span>
+                                    <span class="text-sm text-gray-600">Tinggi Terakhir:</span>
                                     <span class="text-lg font-bold text-orange-600">{{ $child->latestGrowth->actual_height }} cm</span>
                                 </div>
                                 @endif
@@ -83,15 +83,13 @@
                                 <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
-                                Basic Information
-                            </h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                Informasi Dasar
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Full Name</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Nama Lengkap</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->name }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Gender</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Jenis Kelamin</label>
                                     <p class="mt-1">
                                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $child->gender === 'Laki-laki' ? 'bg-blue-100 text-blue-700' : 'bg-pink-100 text-pink-700' }}">
                                             {{ $child->gender }}
@@ -99,59 +97,59 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Birth Date</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Tgl Lahir</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->birth_date->format('d F Y') }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Birth Place</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Tempat Lahir</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->birth_place ?? '-' }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Blood Type</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Gol Darah</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->blood_type ?? '-' }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Birth Type</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Jenis Kelahiran</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->birth_type ?? '-' }}</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Birth Information -->
+                        <!-- Informasi Kelahiran -->
                         <div class="bg-gradient-to-br from-green-50 to-white p-6 rounded-xl border-2 border-green-100">
                             <h4 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
-                                Birth Information
+                                Informasi Kelahiran
                             </h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Birth Weight</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Berat Lahir</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->birth_weight ?? '-' }} kg</p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Birth Height</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Tinggi Lahir</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->birth_height ?? '-' }} cm</p>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Parent Information -->
+                        <!-- Informasi Orang Tua -->
                         <div class="bg-gradient-to-br from-purple-50 to-white p-6 rounded-xl border-2 border-purple-100">
                             <h4 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
                                 <svg class="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                                 </svg>
-                                Parent Information
+                                Informasi Orang Tua
                             </h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Parent Name</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Nama Orang Tua</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->user->name ?? 'N/A' }}</p>
                                 </div>
                                 <div>
-                                    <label class="text-xs font-semibold text-gray-500 uppercase">Parent Email</label>
+                                    <label class="text-xs font-semibold text-gray-500 uppercase">Email Orang Tua</label>
                                     <p class="text-sm font-medium text-gray-900 mt-1">{{ $child->user->email ?? 'N/A' }}</p>
                                 </div>
                             </div>
@@ -164,17 +162,17 @@
                                 <svg class="w-5 h-5 mr-2 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
                                 </svg>
-                                Health Information
+                                Informasi Kesehatan
                             </h4>
                             @if($child->health_notes)
                             <div class="mb-4">
-                                <label class="text-xs font-semibold text-gray-500 uppercase">Health Notes</label>
+                                <label class="text-xs font-semibold text-gray-500 uppercase">Catatan Kesehatan</label>
                                 <p class="text-sm text-gray-700 mt-1">{{ $child->health_notes }}</p>
                             </div>
                             @endif
                             @if($child->allergy_notes)
                             <div>
-                                <label class="text-xs font-semibold text-gray-500 uppercase">Allergy Notes</label>
+                                <label class="text-xs font-semibold text-gray-500 uppercase">Catatan Alergi</label>
                                 <p class="text-sm text-gray-700 mt-1">{{ $child->allergy_notes }}</p>
                             </div>
                             @endif
@@ -194,9 +192,9 @@
                     <svg class="w-7 h-7 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                     </svg>
-                    Growth Records History
+                    Riwayat Catatan Pertumbuhan
                 </span>
-                <span class="text-sm font-normal text-gray-600">{{ $child->growth_records_count }} total records</span>
+                <span class="text-sm font-normal text-gray-600">{{ $child->growth_records_count }} total catatan</span>
             </h3>
         </div>
 
@@ -204,13 +202,13 @@
             <table class="w-full">
                 <thead class="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Date</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Age</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Weight</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Height</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Head Circ.</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Tanggal</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Usia</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Berat</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Tinggi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Lingkar Kpl</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Status</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Photo</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Foto</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -220,7 +218,7 @@
                             {{ $record->record_date->format('M d, Y') }}
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-600">
-                            {{ $record->age_months }} months
+                            {{ $record->age_months }} bulan
                         </td>
                         <td class="px-6 py-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800">
@@ -259,9 +257,9 @@
                                 <img src="{{ asset($record->photo_path) }}" 
                                      class="w-12 h-12 object-cover rounded-lg border-2 border-blue-200 cursor-pointer hover:scale-110 transition-transform"
                                      onclick="window.open('{{ asset($record->photo_path) }}', '_blank')"
-                                     alt="Growth Photo">
+                                     alt="Foto Pertumbuhan">
                             @else
-                                <span class="text-xs text-gray-400">No photo</span>
+                                <span class="text-xs text-gray-400">Tidak ada foto</span>
                             @endif
                         </td>
                     </tr>
@@ -271,7 +269,7 @@
                             <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
                             </svg>
-                            <p class="text-lg font-semibold">No growth records yet</p>
+                            <p class="text-lg font-semibold">Belum ada catatan pertumbuhan</p>
                         </td>
                     </tr>
                     @endforelse

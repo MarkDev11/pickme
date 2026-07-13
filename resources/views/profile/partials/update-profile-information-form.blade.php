@@ -10,7 +10,7 @@
         <!-- Name Input -->
         <div class="group">
             <label for="name" class="block text-sm font-semibold text-gray-800 mb-2">
-                Full Name
+                                Nama Lengkap
             </label>
             <div class="relative">
                 <input 
@@ -22,7 +22,7 @@
                     autofocus 
                     autocomplete="name"
                     class="w-full px-4 py-3 pl-11 bg-white border-2 border-blue-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all duration-300 outline-none group-hover:border-blue-300 group-hover:shadow-md"
-                    placeholder="Enter your full name">
+                    placeholder="Masukkan nama lengkap">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
@@ -42,7 +42,7 @@
         <!-- Email Input -->
         <div class="group">
             <label for="email" class="block text-sm font-semibold text-gray-800 mb-2">
-                Email Address
+                                Alamat Email
             </label>
             <div class="relative">
                 <input 
@@ -77,12 +77,12 @@
                         </svg>
                         <div>
                             <p class="text-sm text-yellow-800 font-medium">
-                                Your email address is unverified.
+                                                                Alamat email Anda belum terverifikasi.
                             </p>
                             <button 
                                 form="send-verification" 
                                 class="mt-2 text-sm text-blue-600 hover:text-blue-700 font-semibold underline transition-colors">
-                                Click here to re-send the verification email.
+                                                                Klik di sini untuk kirim ulang email verifikasi.
                             </button>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                                 <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                                 </svg>
-                                A new verification link has been sent to your email address.
+                                                                Tautan verifikasi baru telah dikirim ke email Anda.
                             </p>
                         </div>
                     @endif
@@ -106,7 +106,7 @@
             <button 
                 type="submit"
                 class="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:ring-4 focus:ring-blue-300 focus:outline-none">
-                Save Changes
+                                Simpan Perubahan
             </button>
 
             @if (session('status') === 'profile-updated')
@@ -119,7 +119,7 @@
                     <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
-                    <span class="text-sm font-medium text-green-700">Saved successfully!</span>
+                    <span class="text-sm font-medium text-green-700">Berhasil disimpan!</span>
                 </div>
             @endif
         </div>

@@ -219,7 +219,7 @@ class AdminController extends Controller
         
         // Prevent deleting own account
         if ($user->id === auth()->id()) {
-            return back()->with('error', 'You cannot delete your own account.');
+            return back()->with('error', 'Anda tidak dapat menghapus akun Anda sendiri.');
         }
 
         // Delete user's analyses and images
@@ -242,7 +242,7 @@ class AdminController extends Controller
         ActivityLog::create([
             'user_id' => auth()->id(),
             'action' => 'deleted_user',
-            'description' => 'Deleted user: ' . $user->name,
+            'description' => 'Menghapus pengguna: ' . $user->name,
             'subject_type' => User::class,
             'subject_id' => $user->id,
             'ip_address' => request()->ip(),
@@ -253,7 +253,7 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users')
-                        ->with('success', 'User deleted successfully!');
+                        ->with('success', 'Pengguna berhasil dihapus!');
     }
 
     /**
@@ -292,7 +292,7 @@ class AdminController extends Controller
         ActivityLog::create([
             'user_id' => auth()->id(),
             'action' => 'deleted_analysis',
-            'description' => 'Deleted analysis #' . $analysis->id,
+            'description' => 'Menghapus analisis #' . $analysis->id,
             'subject_type' => BodyAnalysis::class,
             'subject_id' => $analysis->id,
             'ip_address' => request()->ip(),
@@ -301,7 +301,7 @@ class AdminController extends Controller
         
         $analysis->delete();
 
-        return back()->with('success', 'Analysis deleted successfully!');
+        return back()->with('success', 'Analisis berhasil dihapus!');
     }
 
     /**
@@ -427,7 +427,7 @@ class AdminController extends Controller
     {
         $deleted = ActivityLog::where('created_at', '<', now()->subDays(90))->delete();
         
-        return back()->with('success', "Deleted {$deleted} old activity logs.");
+        return back()->with('success', "Menghapus {$deleted} log aktivitas lama.");
     }
 
     /**
@@ -505,7 +505,7 @@ class AdminController extends Controller
         
         // Prevent changing own role
         if ($user->id === auth()->id()) {
-            return back()->with('error', 'You cannot change your own role.');
+            return back()->with('error', 'Anda tidak dapat mengubah peran Anda sendiri.');
         }
 
         $oldRole = $user->role;
@@ -516,14 +516,14 @@ class AdminController extends Controller
         ActivityLog::create([
             'user_id' => auth()->id(),
             'action' => 'changed_user_role',
-            'description' => "Changed role of {$user->name} from {$oldRole} to {$user->role}",
+            'description' => "Mengubah peran {$user->name} dari {$oldRole} menjadi {$user->role}",
             'subject_type' => User::class,
             'subject_id' => $user->id,
             'ip_address' => request()->ip(),
             'user_agent' => request()->userAgent(),
         ]);
 
-        return back()->with('success', 'User role updated successfully!');
+        return back()->with('success', 'Peran pengguna berhasil diperbarui!');
     }
 
     /**

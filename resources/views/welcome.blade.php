@@ -635,7 +635,7 @@
                 <div class="flex space-x-6 text-sm">
                     <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Kebijakan Privasi</a>
                     <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Syarat & Ketentuan</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Cookie Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Kebijakan Cookie</a>
                 </div>
             </div>
         </div>

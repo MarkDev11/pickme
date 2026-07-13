@@ -1,7 +1,7 @@
 <x-app-layout>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <x-slot name="header">
-        User Management
+        Manajemen Pengguna
     </x-slot>
 
     <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-100 overflow-hidden">
@@ -15,8 +15,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800">All Users</h3>
-                        <p class="text-sm text-gray-600">Manage and monitor all registered users</p>
+                        <h3 class="text-2xl font-bold text-gray-800">Semua Pengguna</h3>
+                        <p class="text-sm text-gray-600">Kelola dan pantau semua pengguna terdaftar</p>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
-                        Export CSV
+                        Ekspor CSV
                     </a>
                 </div>
             </div>
@@ -39,15 +39,15 @@
                     <input type="text" 
                            name="search" 
                            value="{{ request('search') }}" 
-                           placeholder="Search by name or email..."
+                           placeholder="Cari nama atau email..."
                            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
 
                 <!-- Role Filter -->
                 <div>
                     <select name="role" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="">All Roles</option>
-                        <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>User</option>
+                        <option value="">Semua Role</option>
+                        <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>Pengguna</option>
                         <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                     </select>
                 </div>
@@ -55,7 +55,7 @@
                 <!-- Buttons -->
                 <div class="flex gap-2">
                     <button type="submit" class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors">
-                        Filter
+                        Cari
                     </button>
                     <a href="{{ route('admin.users') }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold rounded-xl transition-colors">
                         Reset
@@ -70,12 +70,12 @@
                 <thead class="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">ID</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">User</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Pengguna</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Email</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Role</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Stats</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Joined</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Actions</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Statistik</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Bergabung</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -102,15 +102,15 @@
                             <div class="flex gap-3 text-xs">
                                 <div class="text-center">
                                     <p class="font-semibold text-blue-600">{{ $user->children_count }}</p>
-                                    <p class="text-gray-500">Children</p>
+                                    <p class="text-gray-500">Anak</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="font-semibold text-green-600">{{ $user->growth_records_count }}</p>
-                                    <p class="text-gray-500">Records</p>
+                                    <p class="text-gray-500">Catatan</p>
                                 </div>
                                 <div class="text-center">
                                     <p class="font-semibold text-purple-600">{{ $user->body_analyses_count }}</p>
-                                    <p class="text-gray-500">Analyses</p>
+                                    <p class="text-gray-500">Analisis</p>
                                 </div>
                             </div>
                         </td>
@@ -121,7 +121,7 @@
                             <div class="flex items-center gap-2">
                                 <a href="{{ route('admin.users.show', $user->id) }}" 
                                 class="p-2 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded-lg transition-colors"
-                                title="View Details">
+                                title="Lihat Detail">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -137,7 +137,7 @@
                                     @csrf
                                     <button type="button" 
                                             class="btn-submit-role p-2 bg-purple-100 hover:bg-purple-200 text-purple-600 rounded-lg transition-colors"
-                                            title="Switch Role">
+                                            title="Ganti Role">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
                                         </svg>
@@ -152,7 +152,7 @@
                                     @method('DELETE')
                                     <button type="button" 
                                             class="btn-submit-delete p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors"
-                                            title="Delete User">
+                                            title="Hapus Pengguna">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                         </svg>
@@ -168,7 +168,7 @@
                             <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                             </svg>
-                            <p class="text-lg font-semibold">No users found</p>
+                            <p class="text-lg font-semibold">Tidak ada pengguna</p>
                         </td>
                     </tr>
                     @endforelse

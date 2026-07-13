@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Body Analyses Management
+        Manajemen Analisis Tubuh
     </x-slot>
 
     <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-100 overflow-hidden">
@@ -14,8 +14,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800">All Body Analyses</h3>
-                        <p class="text-sm text-gray-600">Monitor all AI body analysis results</p>
+                        <h3 class="text-2xl font-bold text-gray-800">Semua Analisis Tubuh</h3>
+                        <p class="text-sm text-gray-600">Pantau semua hasil analisis tubuh AI</p>
                     </div>
                 </div>
 
@@ -26,7 +26,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
-                        Export CSV
+                        Ekspor CSV
                     </a>
                 </div>
             </div>
@@ -38,14 +38,14 @@
                     <input type="text" 
                            name="search" 
                            value="{{ request('search') }}" 
-                           placeholder="Search by user name..."
+                           placeholder="Cari nama pengguna..."
                            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
 
                 <!-- Buttons -->
                 <div class="flex gap-2">
                     <button type="submit" class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors">
-                        Search
+                        Cari
                     </button>
                     <a href="{{ route('admin.analyses') }}" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold rounded-xl transition-colors">
                         Reset
@@ -60,15 +60,15 @@
                 <thead class="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">ID</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">User</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Photo</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Height</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Weight</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Age</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Pengguna</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Foto</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Tinggi</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Berat</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Usia</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">BMI</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Category</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Date</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Actions</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Kategori</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Tanggal</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -90,7 +90,7 @@
                             <img src="{{ asset($analysis->image_path) }}" 
                                  class="w-16 h-16 object-cover rounded-xl border-2 border-blue-200 shadow-md cursor-pointer hover:scale-110 transition-transform"
                                  onclick="window.open('{{ asset($analysis->image_path) }}', '_blank')"
-                                 alt="Analysis Photo">
+                                 alt="Foto Analisis">
                         </td>
                         <td class="px-6 py-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
@@ -104,7 +104,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-100 text-orange-800">
-                                {{ $analysis->estimated_age }} yrs
+                                {{ $analysis->estimated_age }} thn
                             </span>
                         </td>
                         <td class="px-6 py-4">
@@ -128,7 +128,7 @@
                             <div class="flex items-center gap-2">
                                 <a href="{{ route('analysis.show', $analysis->id) }}" 
                                    class="p-2 bg-blue-100 hover:bg-blue-200 text-blue-600 rounded-lg transition-colors"
-                                   title="View Details">
+                                   title="Lihat Detail">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
@@ -138,12 +138,12 @@
                                 <form action="{{ route('admin.analyses.destroy', $analysis->id) }}" 
                                       method="POST" 
                                       class="inline"
-                                      onsubmit="return confirm('Are you sure you want to delete this analysis?');">
+                                      onsubmit="return confirm('Yakin ingin menghapus analisis ini?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" 
                                             class="p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-lg transition-colors"
-                                            title="Delete Analysis">
+                                            title="Hapus Analisis">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                                         </svg>
@@ -158,7 +158,7 @@
                             <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                             </svg>
-                            <p class="text-lg font-semibold">No analyses found</p>
+                            <p class="text-lg font-semibold">Tidak ada analisis</p>
                         </td>
                     </tr>
                     @endforelse
@@ -179,7 +179,7 @@
         <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border-2 border-blue-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Underweight</p>
+                    <p class="text-sm text-gray-600 font-medium">Kurus</p>
                     <p class="text-2xl font-bold text-blue-600 mt-1">
                         {{ $analyses->filter(fn($a) => $a->bmi_category === 'Underweight')->count() }}
                     </p>
@@ -211,7 +211,7 @@
         <div class="bg-gradient-to-br from-yellow-50 to-white p-6 rounded-xl border-2 border-yellow-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Overweight</p>
+                    <p class="text-sm text-gray-600 font-medium">Gemuk</p>
                     <p class="text-2xl font-bold text-yellow-600 mt-1">
                         {{ $analyses->filter(fn($a) => $a->bmi_category === 'Overweight')->count() }}
                     </p>
@@ -227,7 +227,7 @@
         <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl border-2 border-red-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Obese</p>
+                    <p class="text-sm text-gray-600 font-medium">Obesitas</p>
                     <p class="text-2xl font-bold text-red-600 mt-1">
                         {{ $analyses->filter(fn($a) => $a->bmi_category === 'Obese')->count() }}
                     </p>

@@ -6,7 +6,7 @@
         <!-- Current Password -->
         <div class="group">
             <label for="update_password_current_password" class="block text-sm font-semibold text-gray-800 mb-2">
-                Current Password
+                Password Saat Ini
             </label>
             <div class="relative">
                 <input 
@@ -15,7 +15,7 @@
                     type="password" 
                     autocomplete="current-password"
                     class="w-full px-4 py-3 pl-11 bg-white border-2 border-blue-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all duration-300 outline-none group-hover:border-blue-300 group-hover:shadow-md"
-                    placeholder="Enter your current password">
+                    placeholder="Masukkan password saat ini">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
@@ -35,7 +35,7 @@
         <!-- New Password -->
         <div class="group">
             <label for="update_password_password" class="block text-sm font-semibold text-gray-800 mb-2">
-                New Password
+                Password Baru
             </label>
             <div class="relative">
                 <input 
@@ -44,7 +44,7 @@
                     type="password" 
                     autocomplete="new-password"
                     class="w-full px-4 py-3 pl-11 bg-white border-2 border-blue-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all duration-300 outline-none group-hover:border-blue-300 group-hover:shadow-md"
-                    placeholder="Create a new password">
+                    placeholder="Buat password baru">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
@@ -62,31 +62,31 @@
             
             <!-- Password Strength Indicator -->
             <div class="mt-3 space-y-2">
-                <p class="text-xs text-gray-600 font-medium">Password must contain:</p>
+                <p class="text-xs text-gray-600 font-medium">Password harus berisi:</p>
                 <div class="grid grid-cols-2 gap-2 text-xs">
                     <div class="flex items-center text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
-                        At least 8 characters
+                        Minimal 8 karakter
                     </div>
                     <div class="flex items-center text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
-                        One uppercase letter
+                        Satu huruf besar
                     </div>
                     <div class="flex items-center text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
-                        One number
+                        Satu angka
                     </div>
                     <div class="flex items-center text-gray-500">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
-                        One special character
+                        Satu karakter khusus
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
         <!-- Confirm Password -->
         <div class="group">
             <label for="update_password_password_confirmation" class="block text-sm font-semibold text-gray-800 mb-2">
-                Confirm New Password
+                Konfirmasi Password Baru
             </label>
             <div class="relative">
                 <input 
@@ -104,7 +104,7 @@
                     type="password" 
                     autocomplete="new-password"
                     class="w-full px-4 py-3 pl-11 bg-white border-2 border-blue-200 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 transition-all duration-300 outline-none group-hover:border-blue-300 group-hover:shadow-md"
-                    placeholder="Confirm your new password">
+                    placeholder="Konfirmasi password baru Anda">
                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -126,7 +126,7 @@
             <button 
                 type="submit"
                 class="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:ring-4 focus:ring-blue-300 focus:outline-none">
-                Update Password
+                Perbarui Password
             </button>
 
             @if (session('status') === 'password-updated')
@@ -139,7 +139,7 @@
                     <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                     </svg>
-                    <span class="text-sm font-medium text-green-700">Password updated successfully!</span>
+                    <span class="text-sm font-medium text-green-700">Password berhasil diperbarui!</span>
                 </div>
             @endif
         </div>

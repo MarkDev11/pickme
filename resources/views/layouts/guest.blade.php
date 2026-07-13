@@ -68,7 +68,7 @@
             <!-- Footer -->
             <div class="relative z-10 mt-6 text-center">
                 <p class="text-sm text-blue-600/60">
-                    © {{ date('Y') }} {{ config('app.name', 'Laravel') }}. All rights reserved.
+                    © {{ date('Y') }} {{ config('app.name', 'Laravel') }}. Semua hak dilindungi.
                 </p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Analysis Details
+        Detail Analisis
     </x-slot>
 
     <div class="">
@@ -11,7 +11,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                 </svg>
-                <span>Back to Dashboard</span>
+                <span>Kembali ke Dashboard</span>
             </a>
         </div>
 
@@ -24,22 +24,22 @@
                             <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
-                            Analyzed Photo
+                            Foto Dianalisis
                         </h3>
                     </div>
                     <div class="p-6">
-                        <img src="{{ asset($analysis->image_path) }}" 
+                        <img src="{{ asset($analysis->image_path) }}"
                              class="w-full rounded-xl shadow-lg mb-4"
-                             alt="Body Analysis">
+                             alt="Analisis Tubuh">
                         <div class="flex gap-2">
-                            <a href="{{ asset($analysis->image_path) }}" 
+                            <a href="{{ asset($analysis->image_path) }}"
                                target="_blank"
                                class="flex-1 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold rounded-lg transition-colors text-center text-sm">
-                                View Full Size
+                                Lihat Ukuran Penuh
                             </a>
-                            <button onclick="downloadImage()" 
+                            <button onclick="downloadImage()"
                                     class="flex-1 px-4 py-2 bg-green-100 hover:bg-green-200 text-green-700 font-semibold rounded-lg transition-colors text-sm">
-                                Download
+                                Unduh
                             </button>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                 <div class="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl shadow-xl p-6 text-white">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-blue-100 text-sm mb-1">Analysis Date</p>
+                            <p class="text-blue-100 text-sm mb-1">Tanggal Analisis</p>
                             <p class="text-2xl font-bold">{{ $analysis->created_at->format('F d, Y') }}</p>
                             <p class="text-blue-100 text-sm mt-1">{{ $analysis->created_at->format('h:i A') }}</p>
                         </div>
@@ -75,7 +75,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm font-medium mb-1">Height</p>
+                        <p class="text-gray-600 text-sm font-medium mb-1">Tinggi</p>
                         <p class="text-3xl font-bold text-gray-800">{{ $analysis->estimated_height }}</p>
                         <p class="text-green-600 font-semibold">cm</p>
                     </div>
@@ -89,7 +89,7 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm font-medium mb-1">Weight</p>
+                        <p class="text-gray-600 text-sm font-medium mb-1">Berat</p>
                         <p class="text-3xl font-bold text-gray-800">{{ $analysis->estimated_weight }}</p>
                         <p class="text-purple-600 font-semibold">kg</p>
                     </div>
@@ -103,9 +103,9 @@
                                 </svg>
                             </div>
                         </div>
-                        <p class="text-gray-600 text-sm font-medium mb-1">Age</p>
+                        <p class="text-gray-600 text-sm font-medium mb-1">Usia</p>
                         <p class="text-3xl font-bold text-gray-800">{{ $analysis->estimated_age }}</p>
-                        <p class="text-orange-600 font-semibold">years</p>
+                        <p class="text-orange-600 font-semibold">tahun</p>
                     </div>
                 </div>
 
@@ -115,7 +115,7 @@
                     $bmi = $heightM > 0 ? round($analysis->estimated_weight / ($heightM * $heightM), 1) : 0;
                     
                     if ($bmi < 18.5) {
-                        $bmiCategory = 'Underweight';
+                        $bmiCategory = 'Kurus';
                         $bmiColor = 'blue';
                         $bmiIcon = 'M13 17h8m0 0V9m0 8l-8-8-4 4-6-6';
                     } elseif ($bmi < 25) {
@@ -123,11 +123,11 @@
                         $bmiColor = 'green';
                         $bmiIcon = 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z';
                     } elseif ($bmi < 30) {
-                        $bmiCategory = 'Overweight';
+                        $bmiCategory = 'Gemuk';
                         $bmiColor = 'yellow';
                         $bmiIcon = 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z';
                     } else {
-                        $bmiCategory = 'Obese';
+                        $bmiCategory = 'Obesitas';
                         $bmiColor = 'red';
                         $bmiIcon = 'M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z';
                     }
@@ -139,7 +139,7 @@
                             <svg class="w-5 h-5 mr-2 text-{{ $bmiColor }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $bmiIcon }}"/>
                             </svg>
-                            Body Mass Index (BMI)
+                            Indeks Massa Tubuh (BMI)
                         </h3>
                     </div>
                     <div class="p-6">
@@ -154,14 +154,14 @@
                                 </svg>
                             </div>
                         </div>
-                        
+
                         <!-- BMI Scale -->
                         <div class="space-y-2">
                             <div class="flex justify-between text-xs font-medium text-gray-600 mb-1">
-                                <span>Underweight</span>
+                                <span>Kurus</span>
                                 <span>Normal</span>
-                                <span>Overweight</span>
-                                <span>Obese</span>
+                                <span>Gemuk</span>
+                                <span>Obesitas</span>
                             </div>
                             <div class="h-3 w-full bg-gradient-to-r from-blue-400 via-green-400 via-yellow-400 to-red-400 rounded-full relative">
                                 <div class="absolute top-1/2 transform -translate-y-1/2 w-1 h-6 bg-gray-800 rounded-full shadow-lg" 
@@ -183,7 +183,7 @@
                             <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                             </svg>
-                            AI Analysis Notes
+                            Catatan Analisis AI
                         </h3>
                     </div>
                     <div class="p-6">
@@ -195,14 +195,14 @@
                 <div class="flex gap-4">
                     <a href="{{ route('analysis.create') }}" 
                        class="flex-1 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-center">
-                        New Analysis
+                        Analisis Baru
                     </a>
-                    <form action="{{ route('analysis.destroy', $analysis->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this analysis?')" class="flex-1">
+                    <form action="{{ route('analysis.destroy', $analysis->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus analisis ini?')" class="flex-1">
                         @csrf
                         @method('DELETE')
                         <button type="submit" 
                                 class="w-full px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300">
-                            Delete Analysis
+                            Hapus Analisis
                         </button>
                     </form>
                 </div>

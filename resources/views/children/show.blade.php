@@ -110,7 +110,7 @@
                 <p class="text-xl font-bold text-blue-600">{{ $child->birth_type === 'normal' ? '✨ Normal' : '🏥 Caesar' }}</p>
             </div>
             <div class="bg-white rounded-2xl shadow-lg p-6 border-2 border-orange-200">
-                <h4 class="text-sm text-gray-600 mb-2">Total Record</h4>
+                <h4 class="text-sm text-gray-600 mb-2">Total Catatan</h4>
                 <p class="text-3xl font-bold text-orange-600">{{ $child->growthRecords->count() }}</p>
             </div>
         </div>
@@ -157,7 +157,7 @@
                         <div>
                             <div class="flex items-center gap-2">
                                 <h3 class="text-2xl font-bold text-white">Resume Dokter AI</h3>
-                                <span class="bg-indigo-500/50 text-xs px-2 py-1 rounded-full border border-indigo-400/50">Auto-Update</span>
+                                <span class="bg-indigo-500/50 text-xs px-2 py-1 rounded-full border border-indigo-400/50">Update Otomatis</span>
                             </div>
                             @if($child->summary_last_updated)
                                 <p class="text-indigo-200 text-sm mt-1">
@@ -268,7 +268,7 @@
                 <div class="p-6 space-y-4">
                     @foreach($child->growthRecords as $record)
                     <div class="flex items-center space-x-4 p-4 bg-gradient-to-r from-blue-50 to-white rounded-xl border-2 border-blue-100 hover:shadow-lg transition-all duration-300">
-                        <img src="{{ asset($record->photo_path) }}" class="w-20 h-20 object-cover rounded-xl shadow-md" alt="Record photo">
+                        <img src="{{ asset($record->photo_path) }}" class="w-20 h-20 object-cover rounded-xl shadow-md" alt="Foto Catatan">
                         
                         <div class="flex-1">
                             <div class="flex items-center justify-between mb-2">

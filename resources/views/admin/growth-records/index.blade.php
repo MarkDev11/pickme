@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        Growth Records Management
+        Manajemen Catatan Pertumbuhan
     </x-slot>
 
     <div class="bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl border border-blue-100 overflow-hidden">
@@ -14,8 +14,8 @@
                         </svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-bold text-gray-800">All Growth Records</h3>
-                        <p class="text-sm text-gray-600">Monitor all children growth tracking data</p>
+                        <h3 class="text-2xl font-bold text-gray-800">Semua Catatan Pertumbuhan</h3>
+                        <p class="text-sm text-gray-600">Pantau data pertumbuhan anak</p>
                     </div>
                 </div>
 
@@ -26,7 +26,7 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
-                        Export CSV
+                        Ekspor CSV
                     </a>
                 </div>
             </div>
@@ -38,14 +38,14 @@
                     <input type="text" 
                            name="search" 
                            value="{{ request('search') }}" 
-                           placeholder="Search by child name..."
+                           placeholder="Cari nama anak..."
                            class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
 
                 <!-- Status Filter -->
                 <div>
                     <select name="status" class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                        <option value="">All Status</option>
+                        <option value="">Semua Status</option>
                         <option value="Normal" {{ request('status') == 'Normal' ? 'selected' : '' }}>Normal</option>
                         <option value="Perlu Perhatian" {{ request('status') == 'Perlu Perhatian' ? 'selected' : '' }}>Perlu Perhatian</option>
                         <option value="Stunting" {{ request('status') == 'Stunting' ? 'selected' : '' }}>Stunting</option>
@@ -71,13 +71,13 @@
                 <thead class="bg-gray-50 border-b-2 border-gray-200">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">ID</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Photo</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Child Name</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Parent</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Record Date</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Age</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Weight</th>
-                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Height</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Foto</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Nama Anak</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Orang Tua</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Tgl Catatan</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Usia</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Berat</th>
+                        <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Tinggi</th>
                         <th class="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase">Status</th>
                     </tr>
                 </thead>
@@ -90,7 +90,7 @@
                                 <img src="{{ asset($record->photo_path) }}" 
                                      class="w-12 h-12 object-cover rounded-xl border-2 border-blue-200 shadow-md cursor-pointer hover:scale-110 transition-transform"
                                      onclick="window.open('{{ asset($record->photo_path) }}', '_blank')"
-                                     alt="Growth Photo">
+                                     alt="Foto Pertumbuhan">
                             @else
                                 <div class="w-12 h-12 bg-gradient-to-br from-gray-200 to-gray-300 rounded-xl flex items-center justify-center">
                                     <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">
-                                {{ $record->age_months }} months
+                                {{ $record->age_months }} bulan
                             </span>
                         </td>
                         <td class="px-6 py-4">
@@ -158,7 +158,7 @@
                                     <p class="text-xs text-gray-500 mt-1 line-clamp-2">{{ Str::limit($record->recommendations, 50) }}</p>
                                 @endif
                             @else
-                                <span class="text-xs text-gray-400">No status</span>
+                                <span class="text-xs text-gray-400">Tidak ada status</span>
                             @endif
                         </td>
                     </tr>
@@ -168,7 +168,7 @@
                             <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                             </svg>
-                            <p class="text-lg font-semibold">No growth records found</p>
+                            <p class="text-lg font-semibold">Tidak ada catatan pertumbuhan</p>
                         </td>
                     </tr>
                     @endforelse
@@ -189,7 +189,7 @@
         <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border-2 border-blue-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Total Records</p>
+                    <p class="text-sm text-gray-600 font-medium">Total Catatan</p>
                     <p class="text-2xl font-bold text-blue-600 mt-1">{{ $stats['total'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
@@ -203,7 +203,7 @@
         <div class="bg-gradient-to-br from-green-50 to-white p-6 rounded-xl border-2 border-green-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Normal Growth</p>
+                    <p class="text-sm text-gray-600 font-medium">Pertumbuhan Normal</p>
                     <p class="text-2xl font-bold text-green-600 mt-1">
                         {{ $stats['normal'] }}
                     </p>
@@ -219,7 +219,7 @@
         <div class="bg-gradient-to-br from-yellow-50 to-white p-6 rounded-xl border-2 border-yellow-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Need Attention</p>
+                    <p class="text-sm text-gray-600 font-medium">Perlu Perhatian</p>
                     <p class="text-2xl font-bold text-yellow-600 mt-1">
                         {{ $stats['attention'] }}
                     </p>
@@ -235,7 +235,7 @@
         <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl border-2 border-red-100">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-sm text-gray-600 font-medium">Critical</p>
+                    <p class="text-sm text-gray-600 font-medium">Kritis</p>
                     <p class="text-2xl font-bold text-red-600 mt-1">
                         {{ $stats['critical'] }}
                     </p>

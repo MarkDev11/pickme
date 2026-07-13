@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Lupa Password</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex items-center justify-center p-4 relative overflow-hidden">
@@ -25,15 +25,15 @@
                     </svg>
                 </div>
                 <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent mb-2">
-                    Forgot Password?
+                    Lupa Password?
                 </h2>
-                <p class="text-blue-600/80 text-sm">No worries, we'll send you reset instructions</p>
+                <p class="text-blue-600/80 text-sm">Tenang, kami kirim instruksi reset</p>
             </div>
 
             <!-- Alert Box -->
             <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100/50 border-l-4 border-blue-500 rounded-lg">
                 <p class="text-sm text-blue-700">
-                    {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                    {{ __('Lupa password? Tidak masalah. Beri tahu kami alamat email Anda dan kami akan mengirimkan tautan reset password untuk memilih yang baru.') }}
                 </p>
             </div>
 
@@ -50,7 +50,7 @@
                 <!-- Email Input -->
                 <div class="group">
                     <label for="email" class="block text-sm font-semibold text-blue-900 mb-2">
-                        Email Address
+                        Alamat Email
                     </label>
                     <div class="relative">
                         <input 
@@ -77,13 +77,13 @@
                 <button 
                     type="submit" 
                     class="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 focus:ring-4 focus:ring-blue-300 focus:outline-none">
-                    Email Password Reset Link
+                    Kirim Tautan Reset Password
                 </button>
 
                 <!-- Back to Login -->
                 <div class="text-center pt-2">
                     <a href="{{ route('login') }}" class="text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300">
-                        ← Back to Login
+                        ← Kembali ke Login
                     </a>
                 </div>
             </form>

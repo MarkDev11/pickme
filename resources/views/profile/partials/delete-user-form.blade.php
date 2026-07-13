@@ -7,9 +7,9 @@
                 </svg>
             </div>
             <div class="flex-1">
-                <h4 class="text-base font-bold text-red-900 mb-2">Warning: This action is irreversible</h4>
+                <h4 class="text-base font-bold text-red-900 mb-2">Peringatan: Tindakan ini tidak dapat dibatalkan</h4>
                 <p class="text-sm text-red-700 leading-relaxed">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+                    Setelah akun Anda dihapus, semua sumber daya dan data akan dihapus secara permanen. Sebelum menghapus akun, harap unduh data atau informasi yang ingin Anda simpan.
                 </p>
             </div>
         </div>
@@ -23,7 +23,7 @@
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
         </svg>
-        <span>Delete Account</span>
+        <span>Hapus Akun</span>
     </button>
 
     <!-- Delete Confirmation Modal -->
@@ -39,29 +39,29 @@
                     </svg>
                 </div>
                 <h2 class="text-2xl font-bold text-gray-900 mb-2">
-                    Delete Account?
+                    Hapus Akun?
                 </h2>
                 <p class="text-sm text-gray-600">
-                    Are you absolutely sure you want to delete your account?
+                    Apakah Anda yakin ingin menghapus akun?
                 </p>
             </div>
 
             <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-lg">
                 <p class="text-sm text-red-700 leading-relaxed">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+                    Setelah akun dihapus, semua sumber daya dan data akan dihapus secara permanen. Masukkan password Anda untuk mengonfirmasi penghapusan akun.
                 </p>
             </div>
 
             <div class="mb-6">
                 <label for="password" class="block text-sm font-semibold text-gray-800 mb-2">
-                    Confirm with Password
+                    Konfirmasi dengan Password
                 </label>
                 <div class="relative">
                     <input
                         id="password"
                         name="password"
                         type="password"
-                        placeholder="Enter your password to confirm"
+                        placeholder="Masukkan password untuk konfirmasi"
                         class="w-full px-4 py-3 pl-11 bg-white border-2 border-red-200 rounded-xl focus:ring-4 focus:ring-red-200 focus:border-red-500 transition-all duration-300 outline-none"
                     />
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -86,7 +86,7 @@
                     type="button"
                     x-on:click="$dispatch('close')"
                     class="px-6 py-3 bg-white hover:bg-gray-50 text-gray-700 font-semibold rounded-xl border-2 border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 focus:ring-4 focus:ring-gray-100 focus:outline-none">
-                    Cancel
+                    Batal
                 </button>
 
                 <button 
@@ -95,7 +95,7 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                     </svg>
-                    <span>Yes, Delete My Account</span>
+                    <span>Ya, Hapus Akun Saya</span>
                 </button>
             </div>
         </form>
