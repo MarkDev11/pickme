@@ -150,19 +150,19 @@
                             <div class="h-px bg-white/20"></div>
                         </div>
 
-                        <!-- Section Label: User Access -->
+                        {{-- Switch to User Dashboard (sementara dimatikan) --}}
+                        {{--
                         <div class="px-4 pt-2">
                             <p class="text-xs font-semibold text-blue-200 uppercase tracking-wider">User Access</p>
                         </div>
-
-                        <!-- Switch to User Dashboard -->
-                        <a href="{{ route('dashboard') }}" 
+                        <a href="{{ route('dashboard') }}"
                            class="flex items-center space-x-3 px-4 py-3 rounded-xl text-white transition-all duration-300 hover:bg-white/10">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
                             </svg>
                             <span class="font-semibold">User Dashboard</span>
                         </a>
+                        --}}
 
                     @else
                         <!-- USER MENU -->
