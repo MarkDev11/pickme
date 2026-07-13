@@ -206,7 +206,38 @@
             }
         }
 
-        document.getElementById('analysisForm').addEventListener('submit', function() {
+        const form = document.getElementById('analysisForm');
+        const photoInput = document.getElementById('photoInput');
+
+        photoInput.addEventListener('invalid', function(e) {
+            e.preventDefault();
+            let msg = 'Silakan pilih foto terlebih dahulu.';
+            if (e.target.validity.typeMismatch) {
+                msg = 'File harus berupa gambar (JPG, JPEG, atau PNG).';
+            } else if (e.target.validity.valueMissing) {
+                msg = 'Silakan pilih foto terlebih dahulu.';
+            }
+            showInlineError(msg);
+        });
+
+        function showInlineError(msg) {
+            let box = document.getElementById('inlineError');
+            if (!box) {
+                box = document.createElement('div');
+                box.id = 'inlineError';
+                box.className = 'mb-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start space-x-2';
+                form.insertBefore(box, form.firstChild.nextSibling);
+            }
+            box.innerHTML = '<svg class="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg><p class="text-sm text-red-700 font-medium">' + msg + '</p>';
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        form.addEventListener('submit', function(e) {
+            if (!photoInput.files || photoInput.files.length === 0) {
+                e.preventDefault();
+                showInlineError('Silakan pilih foto terlebih dahulu.');
+                return;
+            }
             document.getElementById('submitBtn').disabled = true;
             document.getElementById('loadingState').classList.remove('hidden');
         });
