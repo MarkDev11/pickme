@@ -7,6 +7,7 @@ use App\Http\Requests\StoreBodyAnalysisRequest;
 use Illuminate\Support\Facades\Http;
 use App\Models\BodyAnalysis;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
 use App\Models\ActivityLog;
 
 class BodyAnalysisController extends Controller
@@ -102,30 +103,31 @@ class BodyAnalysisController extends Controller
 
             $result = $response->json();
 
-            // 5. Error handling
-            if (isset($result['error'])) {
-                // Delete uploaded file if API fails
+            if (!$response->successful() || isset($result['error'])) {
                 if (file_exists($absolutePath)) {
                     unlink($absolutePath);
                 }
-
+                Log::warning('Gemini analysis failed', [
+                    'status' => $response->status(),
+                    'body' => $result['error']['message'] ?? $response->body(),
+                ]);
                 return back()
-                    ->with('error', 'AI Analysis Error: ' . ($result['error']['message'] ?? 'Unknown error'))
+                    ->with('error', 'Maaf, sedang ada masalah pada layanan AI. Silakan coba lagi nanti.')
                     ->withInput();
             }
 
-            // 6. Parse AI response
             $rawText = $result['candidates'][0]['content']['parts'][0]['text'] ?? '{}';
             $cleanJson = preg_replace('/```json|```/', '', $rawText);
             $cleanJson = trim($cleanJson);
             $data = json_decode($cleanJson, true);
 
-            // Validate parsed data
             if (!$data || !isset($data['height']) || !isset($data['weight']) || !isset($data['age'])) {
                 if (file_exists($absolutePath)) {
                     unlink($absolutePath);
                 }
-                return back()->with('error', 'Failed to parse AI response. Please try again.')->withInput();
+                return back()
+                    ->with('error', 'Maaf, hasil analisis AI tidak valid. Silakan coba lagi dengan foto yang berbeda.')
+                    ->withInput();
             }
 
             // 7. Save to database

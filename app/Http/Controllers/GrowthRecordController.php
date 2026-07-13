@@ -372,11 +372,8 @@ Format JSON:
   \"milestones\": [\"(string)\"]
 }";
 
-            $apiKey = env('GEMINI_API_KEY');
-            
-            // Gunakan model yang lebih stabil untuk visi, flash-exp sering update dan tidak stabil
-            // Disarankan pakai gemini-1.5-flash jika tersedia, atau tetap gemini-2.0-flash-exp
-            $modelName = env('GEMINI_MODEL', 'gemini-2.5-flash-lite-preview-09-2025'); 
+            $apiKey = config('services.gemini.api_key');
+            $modelName = config('services.gemini.model');
 
             $response = Http::timeout(60)
                 ->withHeaders(['Content-Type' => 'application/json'])
@@ -556,8 +553,8 @@ Format JSON:
             }";
 
             // 3. Request ke Gemini (Pakai model Flash agar cepat)
-            $apiKey = env('GEMINI_API_KEY');
-            $model = "gemini-2.5-flash-lite-preview-09-2025"; // Gunakan model cepat
+            $apiKey = config('services.gemini.api_key');
+            $model = config('services.gemini.model');
             
             $response = Http::timeout(10)->post("https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}", [
                 'contents' => [['parts' => [['text' => $prompt]]]]
